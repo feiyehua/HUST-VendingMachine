@@ -1,7 +1,7 @@
 /*
  * @Author       : FeiYehua
  * @Date         : 2024-09-16 23:16:13
- * @LastEditTime : 2024-09-17 18:08:31
+ * @LastEditTime : 2024-09-17 23:20:47
  * @LastEditors  : FeiYehua
  * @Description  : 
  * @FilePath     : VendingMachineLevel1-1.c
@@ -19,16 +19,11 @@ int main()
     int n=0;//n表示物品的种类种数
     printf("请输入物品总数\n");
     scanf("%d",&n);
-    addItem(n);
-    /*for(int i=1;i<=n;i++)
+    if(addItem(n)!=0)
     {
-        char name=0;
-        int place,quan,price;
-        scanf(" %c%d%d%d",&name,&place,&price,&quan);
-        vendingMachineItem[place].name=name;
-        vendingMachineItem[place].price=price;
-        vendingMachineItem[place].quan=quan;
-    }*/
+        printf("输入内容错误！");
+        return -1;
+    }
     for(int i=1;i<=29;i++)
     {
         if(vendingMachineItem[i].quan==0)//如果货架上无货，则不输出
@@ -49,7 +44,7 @@ int main()
 /*
 A 3 5 7
 B 2 4 6
-C 1 2 4
-F 5 6 7
+a 1 2 4
+F 5 6 7 
 T 11 9 10
 */
