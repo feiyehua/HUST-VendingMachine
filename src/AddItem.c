@@ -1,7 +1,7 @@
 /*
  * @Author       : FeiYehua
  * @Date         : 2024-09-17 12:53:01
- * @LastEditTime : 2024-09-17 23:18:13
+ * @LastEditTime : 2024-09-17 23:33:42
  * @LastEditors  : FeiYehua
  * @Description  : 
  * @FilePath     : AddItem.c
@@ -10,13 +10,13 @@
 #include<stdio.h>
 #include"AddItem.h"
 #include"ItemInfo.h"
-int check(char name,int place,int price,int quan)
+int checkItemInfo(char name,int place,int price,int quan)
 {
     if(name>'Z'||name<'A')
     {
         return -1;
     }
-    if(place<=0||place>=30)
+    if(place<=0||place>=6)
     {
         return -1;
     }
@@ -31,7 +31,7 @@ int addItem(int n)
         char name=0;
         int place,quan,price;
         scanf(" %c%d%d%d",&name,&place,&price,&quan);
-        if(check(name,place,price,quan)==-1)
+        if(checkItemInfo(name,place,price,quan)==-1)
         {
             return -1;
         }
