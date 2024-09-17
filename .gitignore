@@ -56,3 +56,4 @@ src/target/
 .vscode/
 hello.c
 .DS_Store
+test
