@@ -1,11 +1,11 @@
 /*
  * @Author       : FeiYehua
  * @Date         : 2024-09-16 23:16:13
- * @LastEditTime : 2024-09-17 00:06:11
+ * @LastEditTime : 2024-09-17 12:35:36
  * @LastEditors  : FeiYehua
  * @Description  : 
- * @FilePath     : VendingMachine.c
- *      © 2021 FeiYehua
+ * @FilePath     : VendingMachineLevel1-1.c
+ *      © 2024 FeiYehua
  */
 #include<stdio.h>
 struct itemInfo{
@@ -55,6 +55,6 @@ int main()
 A 3 5 7
 B 2 4 6
 C 1 2 4
-F 5 6 7
+F 5 6 7 
 T 11 9 10
 */
