@@ -57,3 +57,4 @@ src/target/
 hello.c
 .DS_Store
 test
+build/

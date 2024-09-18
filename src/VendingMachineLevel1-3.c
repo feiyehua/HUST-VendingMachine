@@ -1,7 +1,7 @@
 /*
  * @Author       : FeiYehua
  * @Date         : 2024-09-17 22:58:44
- * @LastEditTime : 2024-09-18 11:53:08
+ * @LastEditTime : 2024-09-18 12:37:45
  * @LastEditors  : FeiYehua
  * @Description  : 
  * @FilePath     : VendingMachineLevel1-3.c
@@ -16,7 +16,8 @@ typedef enum {
     ERROR,
     SELL,
     BUY,
-    ADD
+    ADD,
+    END
 } VendingMachineState;
 VendingMachineState nextState(VendingMachineState currentState)
 {
@@ -32,10 +33,13 @@ VendingMachineState nextState(VendingMachineState currentState)
             printf("请选择要进行的操作\n");
             printf("1.摆放\n");
             printf("2.购买\n");
+            printf("0.退出\n");
             int ope=0;
             scanf("%d",&ope);
             switch(ope)
             {
+                case 0:
+                    return END;
                 case 1:
                     return ADD;
                 case 2:
@@ -62,12 +66,14 @@ VendingMachineState nextState(VendingMachineState currentState)
             }
             return SELL;
         }
+        case END:
+            return END;
     }
 }
 int main()
 {
     VendingMachineState state = SELL;
-    while(state!=ERROR)
+    while(state!=END)
     {
         state=nextState(state);
     }

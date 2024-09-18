@@ -9,6 +9,7 @@
  */
 
 #include<stdio.h>
+#include"Pay.h"
 int price;
 int main()
 {
