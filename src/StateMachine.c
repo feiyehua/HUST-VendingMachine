@@ -1,7 +1,7 @@
 /*
  * @Author       : FeiYehua
  * @Date         : 2024-09-18 12:44:46
- * @LastEditTime : 2024-09-18 12:44:47
+ * @LastEditTime : 2024-09-18 16:52:30
  * @LastEditors  : FeiYehua
  * @Description  : 
  * @FilePath     : StateMachine.c
@@ -23,7 +23,7 @@ VendingMachineState nextState(VendingMachineState currentState)
         }
         case SELL:
         {
-            printf("请选择要进行的操作\n");
+            /*printf("请选择要进行的操作\n");
             printf("1.摆放\n");
             printf("2.购买\n");
             printf("0.退出\n");
@@ -39,7 +39,8 @@ VendingMachineState nextState(VendingMachineState currentState)
                     return BUY;
                 default:
                     return ERROR;
-            }
+            }*/
+           return BUY;
         }
         case ADD:
         {

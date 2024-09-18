@@ -1,7 +1,7 @@
 /*
  * @Author       : FeiYehua
  * @Date         : 2024-09-17 23:25:09
- * @LastEditTime : 2024-09-18 11:54:15
+ * @LastEditTime : 2024-09-18 16:45:52
  * @LastEditors  : FeiYehua
  * @Description  : 
  * @FilePath     : BuyItem.c
@@ -27,6 +27,7 @@ int checkItemAvailability(char name,int place,int quan)
         printf("货物数量不足！\n");
         return -3;
     }
+    vendingMachineItem[place].quan-=quan;
     return 0;
 }
 int buyItem(int* totalPrice)
@@ -47,8 +48,10 @@ int buyItem(int* totalPrice)
         {
             return -1;
         }
-        printf("该商品已经添加到购物车！需要继续添加，请输入0；结算，请输入1\n");
-        scanf("%d",&state);
+        //printf("该商品已经添加到购物车！需要继续添加，请输入0；结算，请输入1");
+        //printf("\n");
+        //scanf("%d",&state);
+        state=1;
     }
     printf("总价为%d元！\n",*totalPrice);
     return 0;

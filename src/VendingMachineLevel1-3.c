@@ -1,7 +1,7 @@
 /*
  * @Author       : FeiYehua
  * @Date         : 2024-09-17 22:58:44
- * @LastEditTime : 2024-09-18 12:45:59
+ * @LastEditTime : 2024-09-18 16:53:50
  * @LastEditors  : FeiYehua
  * @Description  : 
  * @FilePath     : VendingMachineLevel1-3.c
@@ -15,7 +15,7 @@
 #include"StateMachine.h"
 int main()
 {
-    VendingMachineState state = SELL;
+    VendingMachineState state = ADD;
     while(state!=END)
     {
         state=nextState(state);
