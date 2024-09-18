@@ -54,7 +54,7 @@ VendingMachineState nextState(VendingMachineState currentState,int cfg)
             {
                 return ERROR;
             }
-            if(payItem(totalPrice,0)!=0)
+            if(payItem(totalPrice,cfg)!=0)
             {
                 return ERROR;
             }

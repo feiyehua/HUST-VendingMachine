@@ -51,10 +51,5 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
-target/
-src/target/
-.vscode/
-hello.c
 .DS_Store
-test
 build/
