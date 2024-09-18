@@ -1,7 +1,7 @@
 /*** 
  * @Author       : FeiYehua
  * @Date         : 2024-09-18 12:43:31
- * @LastEditTime : 2024-09-18 12:45:15
+ * @LastEditTime : 2024-09-18 16:58:43
  * @LastEditors  : FeiYehua
  * @Description  : 
  * @FilePath     : StateMachine.h
@@ -16,5 +16,5 @@ typedef enum {
     ADD,
     END
 } VendingMachineState;
-VendingMachineState nextState(VendingMachineState);
+VendingMachineState nextState(VendingMachineState,int);
 #endif

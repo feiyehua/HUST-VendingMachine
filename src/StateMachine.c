@@ -1,7 +1,7 @@
 /*
  * @Author       : FeiYehua
  * @Date         : 2024-09-18 12:44:46
- * @LastEditTime : 2024-09-18 16:52:30
+ * @LastEditTime : 2024-09-18 21:09:03
  * @LastEditors  : FeiYehua
  * @Description  : 
  * @FilePath     : StateMachine.c
@@ -12,7 +12,7 @@
 #include"BuyItem.h"
 #include"Pay.h"
 #include"AddItem.h"
-VendingMachineState nextState(VendingMachineState currentState)
+VendingMachineState nextState(VendingMachineState currentState,int cfg)
 {
     switch(currentState)
     {
@@ -44,17 +44,17 @@ VendingMachineState nextState(VendingMachineState currentState)
         }
         case ADD:
         {
-            addItem(1);
+            addItem(cfg);
             return SELL;
         }
         case BUY:
         {
             int totalPrice=0;
-            if(buyItem(&totalPrice)!=0)
+            if(buyItem(&totalPrice,cfg)!=0)
             {
                 return ERROR;
             }
-            if(payItem(totalPrice)!=0)
+            if(payItem(totalPrice,0)!=0)
             {
                 return ERROR;
             }

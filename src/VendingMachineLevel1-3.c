@@ -1,7 +1,7 @@
 /*
  * @Author       : FeiYehua
  * @Date         : 2024-09-17 22:58:44
- * @LastEditTime : 2024-09-18 16:53:50
+ * @LastEditTime : 2024-09-18 16:58:50
  * @LastEditors  : FeiYehua
  * @Description  : 
  * @FilePath     : VendingMachineLevel1-3.c
@@ -18,7 +18,7 @@ int main()
     VendingMachineState state = ADD;
     while(state!=END)
     {
-        state=nextState(state);
+        state=nextState(state,1);//将状态机配置为1，只处理一次摆放、单个商品购买
     }
     return 1;
 }

@@ -17,7 +17,7 @@ int main()
     freopen("Level1-2.out","w",stdout);
     printf("请输入总价\n");
     scanf("%d",&price);
-    if(payItem(price)!=0)
+    if(payItem(price,1)!=0)
     {
         return -1;
     }
