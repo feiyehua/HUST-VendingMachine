@@ -1,7 +1,7 @@
 /*** 
  * @Author       : FeiYehua
  * @Date         : 2024-09-17 23:47:59
- * @LastEditTime : 2024-09-17 23:49:50
+ * @LastEditTime : 2024-09-18 11:42:04
  * @LastEditors  : FeiYehua
  * @Description  : 
  * @FilePath     : Pay.h
@@ -10,6 +10,6 @@
 #ifndef __Pay_h__
 #define __Pay_h__
 
-int payItem(int,int*);
+int payItem(int);
 
 #endif

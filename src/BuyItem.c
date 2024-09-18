@@ -1,7 +1,7 @@
 /*
  * @Author       : FeiYehua
  * @Date         : 2024-09-17 23:25:09
- * @LastEditTime : 2024-09-17 23:55:01
+ * @LastEditTime : 2024-09-18 11:54:15
  * @LastEditors  : FeiYehua
  * @Description  : 
  * @FilePath     : BuyItem.c
@@ -14,17 +14,17 @@ int checkItemAvailability(char name,int place,int quan)
 {
     if(place>5)
     {
-        printf("没有这个通道！");
+        printf("没有这个通道！\n");
         return -2;
     }
     if(vendingMachineItem[place].name!=name)
     {
-        printf("输入的货物与该通道上的货物不匹配！");
+        printf("输入的货物与该通道上的货物不匹配！\n");
         return -1;
     }
     if(vendingMachineItem[place].quan<quan)
     {
-        printf("货物数量不足！");
+        printf("货物数量不足！\n");
         return -3;
     }
     return 0;
@@ -50,5 +50,6 @@ int buyItem(int* totalPrice)
         printf("该商品已经添加到购物车！需要继续添加，请输入0；结算，请输入1\n");
         scanf("%d",&state);
     }
+    printf("总价为%d元！\n",*totalPrice);
     return 0;
 }
