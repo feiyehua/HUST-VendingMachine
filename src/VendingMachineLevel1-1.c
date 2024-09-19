@@ -9,7 +9,7 @@
  */
 #include<stdio.h>
 #include"AddItem.h"
-#include"ItemInfo.h"
+#include"GlobalVariables.h"
 int main()
 {
     for(int i=1;i<=29;i++)

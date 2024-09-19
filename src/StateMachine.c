@@ -1,7 +1,7 @@
 /*
  * @Author       : FeiYehua
  * @Date         : 2024-09-18 12:44:46
- * @LastEditTime : 2024-09-18 21:09:03
+ * @LastEditTime : 2024-09-19 11:00:17
  * @LastEditors  : FeiYehua
  * @Description  : 
  * @FilePath     : StateMachine.c
@@ -18,8 +18,7 @@ VendingMachineState nextState(VendingMachineState currentState,int cfg)
     {
         case ERROR:
         {
-            printf("发生错误！\n");
-            return SELL;
+            return END;
         }
         case SELL:
         {
@@ -44,7 +43,11 @@ VendingMachineState nextState(VendingMachineState currentState,int cfg)
         }
         case ADD:
         {
-            addItem(cfg);
+            if(addItem(cfg)!=0)
+            {
+                printf("输入内容错误！\n");
+                return ADD;
+            }
             return SELL;
         }
         case BUY:
@@ -52,11 +55,11 @@ VendingMachineState nextState(VendingMachineState currentState,int cfg)
             int totalPrice=0;
             if(buyItem(&totalPrice,cfg)!=0)
             {
-                return ERROR;
+                return BUY;
             }
             if(payItem(totalPrice,cfg)!=0)
             {
-                return ERROR;
+                return BUY;
             }
             return SELL;
         }

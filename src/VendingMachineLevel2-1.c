@@ -9,7 +9,7 @@
  */
 #include<stdio.h>
 #include"AddItem.h"
-#include"ItemInfo.h"
+#include"GlobalVariables.h"
 #include"BuyItem.h"
 #include"Pay.h"
 #include"StateMachine.h"

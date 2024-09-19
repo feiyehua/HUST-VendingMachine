@@ -1,7 +1,7 @@
 /*** 
  * @Author       : FeiYehua
  * @Date         : 2024-09-17 12:48:53
- * @LastEditTime : 2024-09-17 23:15:43
+ * @LastEditTime : 2024-09-19 12:51:33
  * @LastEditors  : FeiYehua
  * @Description  : 
  * @FilePath     : AddItem.h
@@ -9,7 +9,7 @@
  */
 #ifndef __AddItem_h__
 #define __AddItem_h__
-
+#include"GlobalVariables.h"
 int addItem(int);
-
+int undoAdd(int *,struct itemInfo*);
 #endif

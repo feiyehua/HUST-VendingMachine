@@ -1,7 +1,7 @@
 /*
  * @Author       : FeiYehua
  * @Date         : 2024-09-17 22:58:44
- * @LastEditTime : 2024-09-18 16:58:50
+ * @LastEditTime : 2024-09-19 14:48:21
  * @LastEditors  : FeiYehua
  * @Description  : 
  * @FilePath     : VendingMachineLevel1-3.c
@@ -9,7 +9,7 @@
  */
 #include<stdio.h>
 #include"AddItem.h"
-#include"ItemInfo.h"
+#include"GlobalVariables.h"
 #include"BuyItem.h"
 #include"Pay.h"
 #include"StateMachine.h"

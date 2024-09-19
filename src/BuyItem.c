@@ -8,7 +8,7 @@
  *      © 2024 FeiYehua
  */
 #include<stdio.h>
-#include"ItemInfo.h"
+#include"GlobalVariables.h"
 #include"BuyItem.h"
 #include<string.h>
 int checkItemAvailability(char name,int place,int quan)

@@ -1,7 +1,7 @@
 /*
  * @Author       : FeiYehua
  * @Date         : 2024-09-17 23:49:04
- * @LastEditTime : 2024-09-18 23:22:02
+ * @LastEditTime : 2024-09-19 14:40:48
  * @LastEditors  : FeiYehua
  * @Description  : 
  * @FilePath     : Pay.c
@@ -10,8 +10,9 @@
 #include"Pay.h"
 #include<stdio.h>
 #include<string.h>
-int lastLoc[4]={0,3,1,2};
-int nextLoc[4]={1,2,3,1};
+//#include"LastAndNextLoc.h"
+extern int lastLoc[4];
+extern int nextLoc[4];
 int curPay[4];//存储最近三个付款信息
 int payItem(int price,int cfg)
 {
