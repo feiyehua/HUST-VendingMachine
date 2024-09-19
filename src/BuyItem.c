@@ -1,7 +1,7 @@
 /*
  * @Author       : FeiYehua
  * @Date         : 2024-09-17 23:25:09
- * @LastEditTime : 2024-09-18 22:15:57
+ * @LastEditTime : 2024-09-19 17:29:41
  * @LastEditors  : FeiYehua
  * @Description  : 
  * @FilePath     : BuyItem.c
@@ -11,6 +11,7 @@
 #include"GlobalVariables.h"
 #include"BuyItem.h"
 #include<string.h>
+struct addedItem addedItemLog[4];
 int checkItemAvailability(char name,int place,int quan)
 {
     if(place>5)
@@ -33,6 +34,7 @@ int checkItemAvailability(char name,int place,int quan)
 }
 int buyItem(int* totalPrice,int cfg)
 {
+    int cur=0;
     printf("请输入购买货物的名称，货物位置，购买数量！\n");
     while(cfg!=0)
     {
@@ -41,28 +43,47 @@ int buyItem(int* totalPrice,int cfg)
         char inputCache[100];
         memset(inputCache,0,sizeof(inputCache));
         fgets(inputCache,100,stdin);
-        if(strcmp(inputCache,"END\n")==0)//输入为END时停止输入
+        if(strcmp(inputCache,"END\n")==0&&cfg!=1)//输入为END时停止输入
         {
             cfg=0;
+            continue;
+        }
+        if(strcmp(inputCache,"BACK\n")==0&&cfg==3)
+        {
+            undoBuy(&cur,&addedItemLog[cur],totalPrice);
             continue;
         }
         sscanf(inputCache," %c %d %d",&name,&place,&quan);
         if(checkItemAvailability(name,place,quan)==0)
         {
-            *totalPrice+=vendingMachineItem[place].price;
+            *totalPrice+=vendingMachineItem[place].price*quan;
         }
         else
         {
-            return -1;
+            continue;
         }
-        //printf("该商品已经添加到购物车！需要继续添加，请输入0；结算，请输入1");
-        //printf("\n");
-        //scanf("%d",&state);
         if(cfg==1)
         {
             cfg-=1;
         }
+        cur=nextLoc[cur];
+        addedItemLog[cur].name=name;
+        addedItemLog[cur].place=place;
+        addedItemLog[cur].quan=quan;
     }
     printf("总价为%d元！\n",*totalPrice);
+    return 0;
+}
+int undoBuy(int* cur,struct addedItem* curItem,int* curTotal)
+{
+    if((*curItem).name==0)
+    {
+        printf("没有可以回退的操作！\n");
+        return -1;
+    }
+    *curTotal-=vendingMachineItem[(*curItem).place].price*(*curItem).quan;
+    vendingMachineItem[(*curItem).place].quan+=(*curItem).quan;
+    (*curItem).name=0,(*curItem).quan=0,(*curItem).place=0;
+    *cur=lastLoc[*cur];
     return 0;
 }

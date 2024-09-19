@@ -70,7 +70,7 @@ int undoAdd(int *cur,struct itemInfo *item)
 {
     if((*item).name==0)
     {
-        printf("\n");
+        printf("没有可以回退的操作！\n");
         return -1;
     }
     (*item).name=0;
