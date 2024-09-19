@@ -1,12 +1,13 @@
 /*
  * @Author       : FeiYehua
  * @Date         : 2024-09-18 12:44:46
- * @LastEditTime : 2024-09-19 11:00:17
+ * @LastEditTime : 2024-09-19 17:52:06
  * @LastEditors  : FeiYehua
  * @Description  : 
  * @FilePath     : StateMachine.c
  *      © 2024 FeiYehua
  */
+//这是状态机的核心实现代码。
 #include<stdio.h>
 #include"StateMachine.h"
 #include"BuyItem.h"
@@ -16,31 +17,6 @@ VendingMachineState nextState(VendingMachineState currentState,int cfg)
 {
     switch(currentState)
     {
-        case ERROR:
-        {
-            return END;
-        }
-        case SELL:
-        {
-            /*printf("请选择要进行的操作\n");
-            printf("1.摆放\n");
-            printf("2.购买\n");
-            printf("0.退出\n");
-            int ope=0;
-            scanf("%d",&ope);
-            switch(ope)
-            {
-                case 0:
-                    return END;
-                case 1:
-                    return ADD;
-                case 2:
-                    return BUY;
-                default:
-                    return ERROR;
-            }*/
-           return BUY;
-        }
         case ADD:
         {
             if(addItem(cfg)!=0)
@@ -48,7 +24,7 @@ VendingMachineState nextState(VendingMachineState currentState,int cfg)
                 printf("输入内容错误！\n");
                 return ADD;
             }
-            return SELL;
+            return BUY;
         }
         case BUY:
         {
@@ -61,7 +37,7 @@ VendingMachineState nextState(VendingMachineState currentState,int cfg)
             {
                 return BUY;
             }
-            return SELL;
+            return BUY;
         }
         case END:
             return END;
