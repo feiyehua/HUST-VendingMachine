@@ -1,18 +1,19 @@
 /*
  * @Author       : FeiYehua
  * @Date         : 2024-09-17 23:25:09
- * @LastEditTime : 2024-09-19 17:29:41
+ * @LastEditTime : 2024-09-19 23:17:05
  * @LastEditors  : FeiYehua
  * @Description  : 
  * @FilePath     : BuyItem.c
  *      © 2024 FeiYehua
  */
+//这里存储了售货机购买的核心函数。
 #include<stdio.h>
 #include"GlobalVariables.h"
 #include"BuyItem.h"
 #include<string.h>
 struct addedItem addedItemLog[4];
-int checkItemAvailability(char name,int place,int quan)
+int checkItemAvailability(char name,int place,int quan)//这个函数用来检测用户的输入是否正确，货物是否充足
 {
     if(place>5)
     {
@@ -32,7 +33,7 @@ int checkItemAvailability(char name,int place,int quan)
     vendingMachineItem[place].quan-=quan;
     return 0;
 }
-int buyItem(int* totalPrice,int cfg)
+int buyItem(int* totalPrice,int cfg)//这个函数是购买操作的核心函数
 {
     int cur=0;
     printf("请输入购买货物的名称，货物位置，购买数量！\n");
@@ -74,7 +75,7 @@ int buyItem(int* totalPrice,int cfg)
     printf("总价为%d元！\n",*totalPrice);
     return 0;
 }
-int undoBuy(int* cur,struct addedItem* curItem,int* curTotal)
+int undoBuy(int* cur,struct addedItem* curItem,int* curTotal)//这个函数用来处理Level2-2的撤销。
 {
     if((*curItem).name==0)
     {

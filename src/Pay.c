@@ -1,7 +1,7 @@
 /*
  * @Author       : FeiYehua
  * @Date         : 2024-09-17 23:49:04
- * @LastEditTime : 2024-09-19 14:40:48
+ * @LastEditTime : 2024-09-19 23:20:27
  * @LastEditors  : FeiYehua
  * @Description  : 
  * @FilePath     : Pay.c
@@ -10,11 +10,11 @@
 #include"Pay.h"
 #include<stdio.h>
 #include<string.h>
-//#include"LastAndNextLoc.h"
+//这个文件中存储了支付的核心函数。
 extern int lastLoc[4];
 extern int nextLoc[4];
 int curPay[4];//存储最近三个付款信息
-int payItem(int price,int cfg)
+int payItem(int price,int cfg)//这是付款操作
 {
     int total=0;
     int cur=0;
@@ -34,10 +34,11 @@ int payItem(int price,int cfg)
         {
             int n=0;
             sscanf(inputCache,"%d",&n);
-            if(n!=1&&n!=2&&n!=5)
+            if(n!=1&&n!=2&&n!=5)//直接在此检测用户输入是否合法
             {   
-                printf("投入金额错误!\n");
-                return -1;
+                printf("投入金额错误，将忽略本次输入!\n");
+                continue;
+                //return -1;
             }
             cur=nextLoc[cur];
             curPay[cur]=n;
@@ -48,7 +49,7 @@ int payItem(int price,int cfg)
     printf("完成投币，开始找零 %d元\n",total-price);
     return 0;
 }
-int undoPay(int *cur,int *curTotal)
+int undoPay(int *cur,int *curTotal)//Level2-2中撤销函数
 {
     if(curPay[*cur]==0)
     {

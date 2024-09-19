@@ -1,18 +1,19 @@
 /*
  * @Author       : FeiYehua
  * @Date         : 2024-09-17 12:53:01
- * @LastEditTime : 2024-09-19 16:59:59
+ * @LastEditTime : 2024-09-19 23:19:28
  * @LastEditors  : FeiYehua
  * @Description  : 
  * @FilePath     : AddItem.c
  *      © 2024 FeiYehua
  */
+//这里存放了摆放操作的核心函数。
 #include<stdio.h>
 #include"AddItem.h"
 #include"GlobalVariables.h"
 #include<string.h>
 struct itemInfo curAdd[4];//存储最近三个付款信息
-int checkItemInfo(char name,int place,int price,int quan)
+int checkItemInfo(char name,int place,int price,int quan)//这里检查了用户输入是否正确
 {
     if(name>'Z'||name<'A')
     {
@@ -25,6 +26,7 @@ int checkItemInfo(char name,int place,int price,int quan)
     return 0;
 }
 int addItem(int cfg)//cfg为1时，只需输入一次，cfg为2时，需要输入多次
+//这是摆放货物的核心函数
 {
     int cur=0;
     printf("请依次输入货物的名称、位置、单价、数量，每行输入一种商品的信息\n");
@@ -66,7 +68,7 @@ int addItem(int cfg)//cfg为1时，只需输入一次，cfg为2时，需要输�
     }
     return 0;
 }
-int undoAdd(int *cur,struct itemInfo *item)
+int undoAdd(int *cur,struct itemInfo *item)//这个是Level2-2中的撤销函数
 {
     if((*item).name==0)
     {
@@ -75,7 +77,7 @@ int undoAdd(int *cur,struct itemInfo *item)
     }
     (*item).name=0;
     (*item).price=0;
-    (*item).quan=0;
+    (*item).quan=0;//删除掉撤销成功的操作信息
     *cur=lastLoc[*cur];
     return 0;
 }
