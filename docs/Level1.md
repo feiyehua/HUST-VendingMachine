@@ -30,6 +30,18 @@ clang: error: linker command failed with exit code 1 (use -v to see invocation)
 
 因此，将编译命令修改为`gcc -I./include a.c b.c -o a`，其中b.c包含了b.h中声明的函数的定义。
 
+## 使用CMake配置自动化编译
+由于项目有一定规模，涉及到多个C文件的编译，所以采用了CMake配置自动化编译。
+CMake的核心文件是CMakeList.txt。
+我的CMakeList.txt：
+```
+cmake_minimum_required(VERSION 3.5.0)
+project(HUST-VendingMachine VERSION 0.1.0 LANGUAGES C) //这是项目的名称
+include_directories(include) //include目录，相当于 -I./include
+add_executable(VendingMachineLevel1-1 src/GlobalVariables.c src/VendingMachineLevel1-1.c src/AddItem.c)//编译指令，第一个参数是生成可执行文件的名称，后面的参数是所用到的c文件。
+```
+使用VSCode的CMake插件创建CMakeList.txt并配置好后，在build目录中`make`即可编译出可执行文件。
+
 ## 状态机
 我所理解的状态机是经过优化，使代码可读性、可维护性更强的大模拟。
 
