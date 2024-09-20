@@ -1,7 +1,7 @@
 /*
  * @Author       : FeiYehua
  * @Date         : 2024-09-16 23:16:13
- * @LastEditTime : 2024-09-18 16:42:23
+ * @LastEditTime : 2024-09-20 17:34:08
  * @LastEditors  : FeiYehua
  * @Description  : 
  * @FilePath     : VendingMachineLevel1-1.c
@@ -17,8 +17,6 @@ int main()
         vendingMachineItem[i].quan=0;
     }
     int n=1;//n表示物品的种类种数
-    //printf("请输入物品总数\n");
-    //scanf("%d",&n);
     if(addItem(n)!=0)
     {
         printf("输入内容错误！");
