@@ -1,7 +1,7 @@
 /*
  * @Author       : FeiYehua
  * @Date         : 2024-09-17 23:25:09
- * @LastEditTime : 2024-09-19 23:17:05
+ * @LastEditTime : 2024-09-22 07:27:54
  * @LastEditors  : FeiYehua
  * @Description  : 
  * @FilePath     : BuyItem.c
@@ -12,6 +12,7 @@
 #include"GlobalVariables.h"
 #include"BuyItem.h"
 #include<string.h>
+#include"ShowItem.h"
 struct addedItem addedItemLog[4];
 int checkItemAvailability(char name,int place,int quan)//这个函数用来检测用户的输入是否正确，货物是否充足
 {
@@ -39,6 +40,10 @@ int buyItem(int* totalPrice,int cfg)//这个函数是购买操作的核心函数
     printf("请输入购买货物的名称，货物位置，购买数量！\n");
     while(cfg!=0)
     {
+#ifdef _DEBUG_
+        printf("\033[0m\033[1;31mThis is a debug message!\033[0m\n");
+        showItem();
+#endif
         char name=0;
         int place=0,quan=0;
         char inputCache[100];

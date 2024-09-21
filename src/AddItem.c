@@ -1,7 +1,7 @@
 /*
  * @Author       : FeiYehua
  * @Date         : 2024-09-17 12:53:01
- * @LastEditTime : 2024-09-19 23:19:28
+ * @LastEditTime : 2024-09-22 07:31:11
  * @LastEditors  : FeiYehua
  * @Description  : 
  * @FilePath     : AddItem.c
@@ -12,6 +12,7 @@
 #include"AddItem.h"
 #include"GlobalVariables.h"
 #include<string.h>
+#include"ShowItem.h"
 struct itemInfo curAdd[4];//存储最近三个付款信息
 int checkItemInfo(char name,int place,int price,int quan)//这里检查了用户输入是否正确
 {
@@ -32,6 +33,10 @@ int addItem(int cfg)//cfg为1时，只需输入一次，cfg为2时，需要输�
     printf("请依次输入货物的名称、位置、单价、数量，每行输入一种商品的信息\n");
     while(cfg!=0)
     {
+#ifdef _DEBUG_
+        printf("\033[0m\033[1;31mThis is a debug message!\033[0m\n");
+        showItem();
+#endif
         char inputCache[100];
         memset(inputCache,0,sizeof(inputCache));
         fgets(inputCache,100,stdin);

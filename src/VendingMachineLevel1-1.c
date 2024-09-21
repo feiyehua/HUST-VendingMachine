@@ -10,6 +10,7 @@
 #include<stdio.h>
 #include"AddItem.h"
 #include"GlobalVariables.h"
+#include"ShowItem.h"
 int main()
 {
     for(int i=1;i<=29;i++)
@@ -22,21 +23,7 @@ int main()
         printf("输入内容错误！");
         return -1;
     }
-    for(int i=1;i<=5;i++)
-    {
-        if(vendingMachineItem[i].quan==0)//如果货架上无货，则不输出
-        {
-            continue;
-        }
-        else{//输出货架上的货物信息
-            printf("%d: ",i);
-            for(int j=1;j<=vendingMachineItem[i].quan;j++)
-            {
-                printf("%c",vendingMachineItem[i].name);
-            }
-            printf(" %d\n",vendingMachineItem[i].price);
-        }
-    }
+    showItem();
     return 0;
 }
 /*
