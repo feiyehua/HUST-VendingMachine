@@ -13,4 +13,4 @@
 #include"GlobalVariables.h"
 int lastLoc[4]={0,3,1,2};
 int nextLoc[4]={1,2,3,1};
-struct itemInfo vendingMachineItem[30];//使用一个结构体存储售货机的物品数量,数组下标为位置
+struct itemInfo vendingMachineItem[10];//使用一个结构体存储售货机的物品数量,数组下标为位置

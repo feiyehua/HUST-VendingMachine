@@ -1,7 +1,7 @@
 /*
  * @Author       : FeiYehua
  * @Date         : 2024-09-17 12:53:01
- * @LastEditTime : 2024-09-22 07:31:11
+ * @LastEditTime : 2024-09-22 08:04:00
  * @LastEditors  : FeiYehua
  * @Description  : 
  * @FilePath     : AddItem.c
@@ -21,6 +21,10 @@ int checkItemInfo(char name,int place,int price,int quan)//这里检查了用户
         return -1;
     }
     if(place<=0||place>=6)
+    {
+        return -1;
+    }
+    if(price>=10||quan>=50)
     {
         return -1;
     }

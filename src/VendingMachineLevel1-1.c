@@ -1,7 +1,7 @@
 /*
  * @Author       : FeiYehua
  * @Date         : 2024-09-16 23:16:13
- * @LastEditTime : 2024-09-20 17:34:08
+ * @LastEditTime : 2024-09-22 08:02:51
  * @LastEditors  : FeiYehua
  * @Description  : 
  * @FilePath     : VendingMachineLevel1-1.c
@@ -13,12 +13,7 @@
 #include"ShowItem.h"
 int main()
 {
-    for(int i=1;i<=29;i++)
-    {
-        vendingMachineItem[i].quan=0;
-    }
-    int n=1;//n表示物品的种类种数
-    if(addItem(n)!=0)
+    if(addItem(1)!=0)
     {
         printf("输入内容错误！");
         return -1;
