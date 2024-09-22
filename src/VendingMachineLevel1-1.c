@@ -1,7 +1,7 @@
 /*
  * @Author       : FeiYehua
  * @Date         : 2024-09-16 23:16:13
- * @LastEditTime : 2024-09-22 08:02:51
+ * @LastEditTime : 2024-09-22 15:25:25
  * @LastEditors  : FeiYehua
  * @Description  : 
  * @FilePath     : VendingMachineLevel1-1.c
@@ -11,8 +11,14 @@
 #include"AddItem.h"
 #include"GlobalVariables.h"
 #include"ShowItem.h"
+#ifdef _WIN32
+#include<windows.h>
+#endif
 int main()
 {
+    #ifdef _WIN32
+    SetConsoleOutputCP(CP_UTF8);
+    #endif
     if(addItem(1)!=0)
     {
         printf("输入内容错误！");

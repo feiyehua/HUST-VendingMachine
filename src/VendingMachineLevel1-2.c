@@ -9,9 +9,15 @@
  */
 #include<stdio.h>
 #include"Pay.h"
+#ifdef _WIN32
+#include<windows.h>
+#endif
 int price;
 int main()
 {
+    #ifdef _WIN32
+    SetConsoleOutputCP(CP_UTF8);
+    #endif
     printf("请输入总价\n");
     scanf("%d",&price);
     if(payItem(price,1)!=0)

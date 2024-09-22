@@ -1,7 +1,7 @@
 /*
  * @Author       : FeiYehua
  * @Date         : 2024-09-18 12:49:34
- * @LastEditTime : 2024-09-18 22:14:54
+ * @LastEditTime : 2024-09-22 15:25:48
  * @LastEditors  : FeiYehua
  * @Description  : 
  * @FilePath     : VendingMachineLevel2-1.c
@@ -13,8 +13,14 @@
 #include"BuyItem.h"
 #include"Pay.h"
 #include"StateMachine.h"
+#ifdef _WIN32
+#include<windows.h>
+#endif
 int main()
 {
+    #ifdef _WIN32
+    SetConsoleOutputCP(CP_UTF8);
+    #endif
     VendingMachineState state = ADD;
     while(state!=END)
     {

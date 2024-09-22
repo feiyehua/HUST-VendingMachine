@@ -10,9 +10,15 @@
 
 #include<stdio.h>
 #include"Pay.h"
+#ifdef _WIN32
+#include<windows.h>
+#endif
 int price;
 int main()
 {
+    #ifdef _WIN32
+    SetConsoleOutputCP(CP_UTF8);
+    #endif
     freopen("Level1-2.in","r",stdin);
     freopen("Level1-2.out","w",stdout);
     printf("请输入总价\n");

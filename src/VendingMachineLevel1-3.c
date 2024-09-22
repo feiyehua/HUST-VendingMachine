@@ -13,8 +13,14 @@
 #include"BuyItem.h"
 #include"Pay.h"
 #include"StateMachine.h"
+#ifdef _WIN32
+#include<windows.h>
+#endif
 int main()
 {
+    #ifdef _WIN32
+    SetConsoleOutputCP(CP_UTF8);
+    #endif
     VendingMachineState state = ADD;
     while(state!=END)
     {
