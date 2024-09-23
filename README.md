@@ -15,3 +15,7 @@ Learning notes are placed in `docs/` .
 # Debug
 Please add `add_definitions(-D_DEBUG_)`to CMakeList.txt. The programe will print debug info.
 
+# About file operations in Level 1-2
+Please put your input file to `build/`, and rename it to `Level1-2.in` (Make sure it's plain text!) 
+
+Then `cd build && ./VendingMachineLevel1-2File`, the output will be print in `build/Level1-2.out` .

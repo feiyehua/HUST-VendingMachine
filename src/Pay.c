@@ -1,7 +1,7 @@
 /*
  * @Author       : FeiYehua
  * @Date         : 2024-09-17 23:49:04
- * @LastEditTime : 2024-09-19 23:20:27
+ * @LastEditTime : 2024-09-23 16:22:27
  * @LastEditors  : FeiYehua
  * @Description  : 
  * @FilePath     : Pay.c
@@ -18,6 +18,7 @@ int payItem(int price,int cfg)//这是付款操作
 {
     int total=0;
     int cur=0;
+    printf("总价为%d元，开始投币！\n",price);
     while(total<price)
     {
         char name=0;

@@ -1,7 +1,7 @@
 /*
  * @Author       : FeiYehua
  * @Date         : 2024-09-17 12:44:51
- * @LastEditTime : 2024-09-18 11:44:51
+ * @LastEditTime : 2024-09-23 16:33:03
  * @LastEditors  : FeiYehua
  * @Description  : 
  * @FilePath     : VendingMachineLevel1-2File.c
@@ -22,7 +22,12 @@ int main()
     freopen("Level1-2.in","r",stdin);
     freopen("Level1-2.out","w",stdout);
     printf("请输入总价\n");
-    scanf("%d",&price);
+    while(scanf("%d",&price)!=1)
+    {
+        printf("请输入一个数字！\n");
+        while(getchar()!='\n');
+    }
+    while(getchar()!='\n');
     if(payItem(price,1)!=0)
     {
         return -1;

@@ -1,7 +1,7 @@
 /*
  * @Author       : FeiYehua
  * @Date         : 2024-09-17 12:40:09
- * @LastEditTime : 2024-09-18 11:44:26
+ * @LastEditTime : 2024-09-23 16:20:33
  * @LastEditors  : FeiYehua
  * @Description  : 
  * @FilePath     : VendingMachineLevel1-2.c
@@ -19,7 +19,12 @@ int main()
     SetConsoleOutputCP(CP_UTF8);
     #endif
     printf("请输入总价\n");
-    scanf("%d",&price);
+    while(scanf("%d",&price)!=1)
+    {
+        printf("请输入一个数字！\n");
+        while(getchar()!='\n');
+    }
+    while(getchar()!='\n');
     if(payItem(price,1)!=0)
     {
         return -1;
