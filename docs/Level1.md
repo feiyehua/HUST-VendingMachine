@@ -53,3 +53,5 @@ add_executable(VendingMachineLevel1-1 src/GlobalVariables.c src/VendingMachineLe
 
 ~~本来希望用状态机实现更加复杂的状态转换的，比如在收货状态时进行补货。不过按照题目要求砍掉了这个功能~~
 
+## 处理缓冲区问题
+使用`scanf`处理输入内容时，常会遇到一行内容未读完或者用户在输入时行末留有空格等字符，导致下一次使用`scanf`时读入错误的情况。可以使用`while(getchar()!='\n');`语句，将缓冲区内剩余内容读入完毕，这样就能确保下次`scanf`从行首读起。
