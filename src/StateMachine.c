@@ -1,7 +1,7 @@
 /*
  * @Author       : FeiYehua
  * @Date         : 2024-09-18 12:44:46
- * @LastEditTime : 2024-09-19 23:29:05
+ * @LastEditTime : 2024-09-27 18:02:32
  * @LastEditors  : FeiYehua
  * @Description  : 
  * @FilePath     : StateMachine.c
@@ -22,13 +22,16 @@ VendingMachineState nextState(VendingMachineState currentState,int cfg)//状态�
         {
             if(addItem(cfg)!=0)
             {
-                printf("输入内容错误！\n");
                 return ADD;
             }
             return BUY;//加入完成后，跳转到让用户购买的状态
         }
         case BUY:
         {
+            if(checkIfEmpty()==0)
+            {
+                return END;//如果售空，则结束程序
+            }
             int totalPrice=0;
             if(buyItem(&totalPrice,cfg)!=0)
             {
@@ -37,11 +40,6 @@ VendingMachineState nextState(VendingMachineState currentState,int cfg)//状态�
             if(payItem(totalPrice,cfg)!=0)
             {
                 return BUY;
-            }
-            if(checkIfEmpty()==0)
-            {
-                printf("货物已售空，欢迎下次再来！\n");
-                return END;//如果售空，则结束程序
             }
             return BUY;//没有售空时，继续允许用户购买
         }

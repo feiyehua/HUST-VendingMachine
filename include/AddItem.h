@@ -11,5 +11,5 @@
 #define __AddItem_h__
 #include"GlobalVariables.h"
 int addItem(int);
-int undoAdd(int *,struct itemInfo*);
+int undoAdd(int *,struct itemInfo*,struct itemInfo *);
 #endif

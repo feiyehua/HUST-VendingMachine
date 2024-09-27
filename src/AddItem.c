@@ -1,7 +1,7 @@
 /*
  * @Author       : FeiYehua
  * @Date         : 2024-09-17 12:53:01
- * @LastEditTime : 2024-09-22 08:04:00
+ * @LastEditTime : 2024-09-27 18:02:48
  * @LastEditors  : FeiYehua
  * @Description  : 
  * @FilePath     : AddItem.c
@@ -14,19 +14,27 @@
 #include<string.h>
 #include"ShowItem.h"
 struct itemInfo curAdd[4];//存储最近三个付款信息
+int addedItemPlace[4];
 int checkItemInfo(char name,int place,int price,int quan)//这里检查了用户输入是否正确
 {
     if(name>'Z'||name<'A')
     {
+        printf("输入的物品名称错误！\n");
         return -1;
     }
     if(place<=0||place>=6)
     {
+        printf("输入的位置错误！\n");
         return -1;
     }
-    if(price>=10||quan>=50)
+    if(price>=10)
     {
+        printf("输入的价格过高！\n");
         return -1;
+    }
+    if(quan>=50)
+    {
+        printf("物品数量过多！\n");
     }
     return 0;
 }
@@ -46,22 +54,29 @@ int addItem(int cfg)//cfg为1时，只需输入一次，cfg为2时，需要输�
         fgets(inputCache,100,stdin);
         if(strcmp(inputCache,"END\n")==0&&cfg!=1)//当检测到输入为END时，跳出循环，此功能只在cfg为2或3时可用
         {
-            cfg=0;
-            continue;
+            return 0;
         }
         if(strcmp(inputCache,"BACK\n")==0&&cfg==3)//当检测到输入为END时，跳出循环，此功能只在cfg为2或3时可用
         {
-            undoAdd(&cur,&curAdd[cur]);
+            undoAdd(&cur,&curAdd[cur],&vendingMachineItem[addedItemPlace[cur]]);
             continue;
         }
         char name=0;
         int place=0,quan=0,price=0;
-        if(sscanf(inputCache," %c %d %d %d",&name,&place,&price,&quan)!=4){
-            return -1;
+        if(sscanf(inputCache," %c %d %d %d",&name,&place,&price,&quan)!=4)
+        {
+            printf("输入内容错误！\n");
+            continue;
         }
         if(checkItemInfo(name,place,price,quan)==-1)
         {
-            return -1;
+            printf("输入内容错误！\n");
+            continue;
+        }
+        if(vendingMachineItem[place].quan!=0)
+        {
+            printf("所选货架上已经有货！\n");
+            continue;
         }
         vendingMachineItem[place].name=name;
         vendingMachineItem[place].price=price;
@@ -70,14 +85,15 @@ int addItem(int cfg)//cfg为1时，只需输入一次，cfg为2时，需要输�
         curAdd[cur].name=name;
         curAdd[cur].price=price;
         curAdd[cur].quan=quan;
+        addedItemPlace[cur]=place;
         if(cfg==1)
         {
-            cfg-=1;
+            return 0;
         }
     }
     return 0;
 }
-int undoAdd(int *cur,struct itemInfo *item)//这个是Level2-2中的撤销函数
+int undoAdd(int *cur,struct itemInfo *item,struct itemInfo *itemOnStall)//这个是Level2-2中的撤销函数
 {
     if((*item).name==0)
     {
@@ -87,6 +103,10 @@ int undoAdd(int *cur,struct itemInfo *item)//这个是Level2-2中的撤销函数
     (*item).name=0;
     (*item).price=0;
     (*item).quan=0;//删除掉撤销成功的操作信息
+    (*itemOnStall).name=0;
+    (*itemOnStall).price=0;
+    (*itemOnStall).quan=0;
+    addedItemPlace[*cur]=0;
     *cur=lastLoc[*cur];
     return 0;
 }

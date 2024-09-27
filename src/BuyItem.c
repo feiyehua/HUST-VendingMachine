@@ -1,7 +1,7 @@
 /*
  * @Author       : FeiYehua
  * @Date         : 2024-09-17 23:25:09
- * @LastEditTime : 2024-09-22 07:27:54
+ * @LastEditTime : 2024-09-27 18:08:46
  * @LastEditors  : FeiYehua
  * @Description  : 
  * @FilePath     : BuyItem.c
@@ -51,15 +51,18 @@ int buyItem(int* totalPrice,int cfg)//这个函数是购买操作的核心函数
         fgets(inputCache,100,stdin);
         if(strcmp(inputCache,"END\n")==0&&cfg!=1)//输入为END时停止输入
         {
-            cfg=0;
-            continue;
+            return 0;
         }
         if(strcmp(inputCache,"BACK\n")==0&&cfg==3)
         {
             undoBuy(&cur,&addedItemLog[cur],totalPrice);
             continue;
         }
-        sscanf(inputCache," %c %d %d",&name,&place,&quan);
+        if(sscanf(inputCache," %c %d %d",&name,&place,&quan)!=3)
+        {
+            printf("输入内容错误！\n");
+            continue;
+        }
         if(checkItemAvailability(name,place,quan)==0)
         {
             *totalPrice+=vendingMachineItem[place].price*quan;
@@ -70,14 +73,14 @@ int buyItem(int* totalPrice,int cfg)//这个函数是购买操作的核心函数
         }
         if(cfg==1)
         {
-            cfg-=1;
+            return 0;
         }
         cur=nextLoc[cur];
         addedItemLog[cur].name=name;
         addedItemLog[cur].place=place;
         addedItemLog[cur].quan=quan;
     }
-    printf("总价为%d元！\n",*totalPrice);
+    //printf("总价为%d元！\n",*totalPrice);
     return 0;
 }
 int undoBuy(int* cur,struct addedItem* curItem,int* curTotal)//这个函数用来处理Level2-2的撤销。
