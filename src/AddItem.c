@@ -1,7 +1,7 @@
 /*
  * @Author       : FeiYehua
  * @Date         : 2024-09-17 12:53:01
- * @LastEditTime : 2024-09-28 18:28:10
+ * @LastEditTime : 2024-09-28 22:18:00
  * @LastEditors  : FeiYehua
  * @Description  : 
  * @FilePath     : AddItem.c
@@ -73,11 +73,6 @@ int addItem(int cfg)//cfg为1时，只需输入一次，cfg为2时，需要输�
             printf("输入内容错误！\n");
             continue;
         }
-        /*if(vendingMachineItem[place].quan!=0)
-        {
-            printf("所选货架上已经有货！\n");
-            continue;
-        }*/
         cur=nextLoc[cur];
         curAdd[cur].name=vendingMachineItem[place].name;
         curAdd[cur].price=vendingMachineItem[place].price;

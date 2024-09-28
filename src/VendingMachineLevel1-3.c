@@ -26,5 +26,5 @@ int main()
     {
         state=nextState(state,1);//将状态机配置为1，只处理一次摆放、单个商品购买
     }
-    return 1;
+    return 0;
 }

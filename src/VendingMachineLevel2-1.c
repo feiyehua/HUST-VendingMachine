@@ -1,7 +1,7 @@
 /*
  * @Author       : FeiYehua
  * @Date         : 2024-09-18 12:49:34
- * @LastEditTime : 2024-09-22 15:25:48
+ * @LastEditTime : 2024-09-28 22:17:22
  * @LastEditors  : FeiYehua
  * @Description  : 
  * @FilePath     : VendingMachineLevel2-1.c
@@ -26,5 +26,5 @@ int main()
     {
         state=nextState(state,2);//状态设置为2，处理单次多个购买、摆放
     }
-    return 1;
+    return 0;
 }

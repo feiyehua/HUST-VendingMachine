@@ -1,7 +1,7 @@
 /*
  * @Author       : FeiYehua
  * @Date         : 2024-09-16 23:16:13
- * @LastEditTime : 2024-09-22 15:25:25
+ * @LastEditTime : 2024-09-28 22:17:46
  * @LastEditors  : FeiYehua
  * @Description  : 
  * @FilePath     : VendingMachineLevel1-1.c
@@ -21,7 +21,7 @@ int main()
     #endif
     if(addItem(1)!=0)
     {
-        printf("输入内容错误！");
+        printf("输入内容错误！\n");
         return -1;
     }
     showItem();

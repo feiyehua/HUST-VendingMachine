@@ -26,5 +26,5 @@ int main()
     {
         state=nextState(state,3);//状态设置为3，添加回退功能
     }
-    return 1;
+    return 0;
 }
