@@ -1,7 +1,7 @@
 /*
  * @Author       : FeiYehua
  * @Date         : 2024-09-18 12:44:46
- * @LastEditTime : 2024-09-27 18:02:32
+ * @LastEditTime : 2024-10-10 20:36:39
  * @LastEditors  : FeiYehua
  * @Description  : 
  * @FilePath     : StateMachine.c
@@ -14,6 +14,7 @@
 #include"Pay.h"
 #include"AddItem.h"
 #include"CheckIfEmpty.h"
+int totalPrice=0;
 VendingMachineState nextState(VendingMachineState currentState,int cfg)//状态机的状态转移函数
 {
     switch(currentState)
@@ -32,16 +33,36 @@ VendingMachineState nextState(VendingMachineState currentState,int cfg)//状态�
             {
                 return END;//如果售空，则结束程序
             }
-            int totalPrice=0;
-            if(buyItem(&totalPrice,cfg)!=0)
+            /*if(buyItem(&totalPrice,cfg)!=0)
             {
                 return BUY;
-            }
-            if(payItem(totalPrice,cfg)!=0)
+            }*/
+            switch(buyItem(&totalPrice,cfg))
             {
-                return BUY;
+                case 1:
+                {
+                    return ADD;
+                }
+                default:
+                {
+                    return PAY;
+                }
             }
             return BUY;//没有售空时，继续允许用户购买
+        }
+        case PAY:
+        {
+            switch(payItem(totalPrice,cfg))
+            {
+                case 1:
+                {
+                    return BUY;
+                }
+                default:
+                {
+                    return BUY;
+                }
+            }
         }
         case END:
             return END;//END状态时，状态机直接退出，此语句不会执行

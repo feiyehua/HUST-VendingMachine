@@ -38,6 +38,7 @@ int buyItem(int* totalPrice,int cfg)//这个函数是购买操作的核心函数
 {
     int cur=0;
     printf("请输入购买货物的名称，货物位置，购买数量！\n");
+    int flag=1;
     while(cfg!=0)
     {
 #ifdef _DEBUG_
@@ -49,6 +50,11 @@ int buyItem(int* totalPrice,int cfg)//这个函数是购买操作的核心函数
         char inputCache[100];
         memset(inputCache,0,sizeof(inputCache));
         fgets(inputCache,100,stdin);
+        if(strcmp(inputCache,"ADD\n")==0&&flag==1)
+        {
+            return 1;//如果用户希望返回添加货物的状态，则返回1
+        }
+        flag=0;//返回添加货物仅在第一次询问购买时有效
         if(strcmp(inputCache,"END\n")==0&&cfg!=1)//输入为END时停止输入
         {
             return 0;

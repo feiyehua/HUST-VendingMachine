@@ -18,6 +18,7 @@ int payItem(int price,int cfg)//这是付款操作
 {
     int total=0;
     int cur=0;
+    int flag=1;
     printf("总价为%d元，开始投币！\n",price);
     while(total<price)
     {
@@ -26,6 +27,11 @@ int payItem(int price,int cfg)//这是付款操作
         char inputCache[100];
         memset(inputCache,0,sizeof(inputCache));
         fgets(inputCache,100,stdin);
+        if(strcmp(inputCache,"BUY\n")==0&&flag==1)
+        {
+            return 1;//如果用户希望返回购买货物的状态，则返回1
+        }
+        flag=0;//返回购买货物仅在第一次询问投币时有效
         if(cfg==3&&strcmp(inputCache,"BACK\n")==0)
         {
             undoPay(&cur,&total);
